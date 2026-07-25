@@ -1,0 +1,92 @@
+# .gitignore para solución DataManagement (Visual Studio / .NET)
+# Generado por GitHub Copilot
+
+# Visual Studio
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ide
+
+# Build directories
+[Bb]in/
+[Oo]bj/
+Debug/
+Release/
+artifacts/
+TestResults/
+
+# Compiled files
+*.dll
+*.exe
+*.pdb
+*.appx
+*.msi
+*.nupkg
+
+# NuGet
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# Node / front-end
+node_modules/
+bower_components/
+
+# Logs, temp
+*.log
+*.tmp
+*.temp
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+coverage.*
+
+# Publish / deploy
+.publish/
+*.Publish.xml
+
+# Package/restore
+*.nupkg
+
+# Database files (LocalDB, backups, dumps)
+*.mdf
+*.ldf
+*.sdf
+*.bak
+*.db
+
+# Secrets / local configuration
+secrets.json
+.env
+.env.*
+appsettings.*.json
+appsettings.Development.json
+appsettings.Local.json
+
+# Backup/IDE files
+*.~*
+*.orig
+
+# Ignore user-specific SQL Server Data Tools files
+*.sqlproj.user
+
+# Ignore JetBrains Rider caches
+.idea/
+
+# End

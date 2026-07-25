@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Bookstore/Bookstore.sqlproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
