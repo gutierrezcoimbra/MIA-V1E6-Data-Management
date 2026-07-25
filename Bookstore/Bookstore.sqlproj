@@ -68,4 +68,21 @@
   <ItemGroup>
     <None Include="src\README.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="src\schema\tables\01_address.sql" />
+    <Build Include="src\schema\tables\02_address_status.sql" />
+    <Build Include="src\schema\tables\03_author.sql" />
+    <Build Include="src\schema\tables\04_book.sql" />
+    <Build Include="src\schema\tables\05_book_author.sql" />
+    <Build Include="src\schema\tables\06_book_language.sql" />
+    <Build Include="src\schema\tables\07_country.sql" />
+    <Build Include="src\schema\tables\08_cust_order.sql" />
+    <Build Include="src\schema\tables\09_customer.sql" />
+    <Build Include="src\schema\tables\10_customer_address.sql" />
+    <Build Include="src\schema\tables\11_order_history.sql" />
+    <Build Include="src\schema\tables\12_order_line.sql" />
+    <Build Include="src\schema\tables\13_order_status.sql" />
+    <Build Include="src\schema\tables\14_publisher.sql" />
+    <Build Include="src\schema\tables\15_shipping_method.sql" />
+  </ItemGroup>
 </Project>
