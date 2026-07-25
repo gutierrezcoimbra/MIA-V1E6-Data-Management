@@ -1,9 +1,23 @@
-DataManagement
-===============
+MIA-V1E6
+========
 
-Breve descripción
+Modulo: Data Management and Bussiness Intelligence
+---------------------------------------------------
+
+Descripción
 -----------------
 DataManagement es una solución para gestión de datos y proyectos relacionados con bases de datos. Contiene proyectos de aplicación, scripts SQL y utilidades para migraciones, pruebas y despliegue.
+
+Grupo: 5
+-----------------
+
+Integrantes:
+-----------------
+- Ligia barrera
+- Victor Hugo Gutierrez
+- Loren Dereck Jiménez
+- Limberg Maldonado
+- Kevin Alexis padilla
 
 Contenido principal
 -------------------
@@ -15,11 +29,6 @@ Cómo abrir y compilar
 1. Abrir DataManagement.sln con Visual Studio 2022/2026.
 2. Restaurar paquetes NuGet.
 3. Compilar la solución (Build).
-
-Notas sobre configuración
-------------------------
-- Los archivos de configuración locales y secretos no están en el repositorio (.gitignore los excluye).
-- Para ejecutar pruebas o aplicar migraciones, configurar la cadena de conexión en variables de entorno o en archivos locales no versionados (p. ej. appsettings.Development.json).
 
 Contacto
 --------
