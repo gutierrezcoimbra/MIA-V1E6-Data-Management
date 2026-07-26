@@ -1,6 +1,6 @@
 # MIA-V1E6
 
-## Módulo: Data Management and Bussiness Intelligence
+## Módulo: Data Management and Business Intelligence
 
 ### Descripción
 
