@@ -1,10 +1,15 @@
-#MIA-V1E6
+# MIA-V1E6
 
-##Modulo: Data Management and Bussiness Intelligence
-##Grupo: 5
-##Integrantes:
-- Ligia barrera
+## Módulo: Data Management and Business Intelligence
+
+### Grupo
+
+5
+
+### Integrantes
+
+- Ligia Gabriela Barrera Copa
 - Victor Hugo Gutierrez
 - Loren Dereck Jiménez
 - Limberg Maldonado
-- ºKevin Alexis padilla
+- Kevin Alexis Padilla Lopez
