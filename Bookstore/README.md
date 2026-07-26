@@ -1,19 +1,16 @@
-MIA-V1E6
-========
+# MIA-V1E6
 
-Modulo: Data Management and Bussiness Intelligence
----------------------------------------------------
+## Módulo: Data Management and Bussiness Intelligence
 
-Proyecto: Bookstore
------------------
+### Proyecto: Bookstore
 
-Grupo: 5
------------------
+### Grupo 
+5
 
-Integrantes:
------------------
-- Ligia barrera
+### Integrantes
+
+- Ligia Gabriela Barrera Copa
 - Victor Hugo Gutierrez
 - Loren Dereck Jiménez
 - Limberg Maldonado
-- Kevin Alexis padilla
+- Kevin Alexis Padilla Lopez

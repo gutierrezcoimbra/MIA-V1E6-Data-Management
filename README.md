@@ -1,35 +1,34 @@
-MIA-V1E6
-========
+# MIA-V1E6
 
-Modulo: Data Management and Bussiness Intelligence
----------------------------------------------------
+## Módulo: Data Management and Bussiness Intelligence
 
-Descripción
------------------
+### Descripción
+
 DataManagement es una solución para gestión de datos y proyectos relacionados con bases de datos. Contiene proyectos de aplicación, scripts SQL y utilidades para migraciones, pruebas y despliegue.
 
-Grupo: 5
------------------
+### Grupo
 
-Integrantes:
------------------
-- Ligia barrera
+5
+
+### Integrantes
+
+- Ligia Gabriela Barrera Copa
 - Victor Hugo Gutierrez
 - Loren Dereck Jiménez
 - Limberg Maldonado
 - Kevin Alexis Padilla Lopez
 
-Contenido principal
--------------------
-- Solución Visual Studio (.sln) con los proyectos de la aplicación.
-- Carpetas habituales: sql/ (migraciones y scripts), src/ (código fuente), docs/ (documentación), infra/ (infraestructura/devops).
+### Contenido principal
 
-Cómo abrir y compilar
----------------------
-1. Abrir DataManagement.sln con Visual Studio 2022/2026.
+- Solución Visual Studio (`.sln`) con los proyectos de la aplicación.
+- Carpetas habituales: `sql/` (migraciones y scripts), `src/` (código fuente), `docs/` (documentación), `infra/` (infraestructura/devops).
+
+### Cómo abrir y compilar
+
+1. Abrir `DataManagement.sln` con Visual Studio 2022/2026.
 2. Restaurar paquetes NuGet.
 3. Compilar la solución (Build).
 
-Contacto
---------
+### Contacto
+
 Para más detalles consultar el historial de commits para decisiones de diseño.
