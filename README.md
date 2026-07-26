@@ -17,7 +17,7 @@ Integrantes:
 - Victor Hugo Gutierrez
 - Loren Dereck Jiménez
 - Limberg Maldonado
-- Kevin Alexis padilla
+- Kevin Alexis Padilla Lopez
 
 Contenido principal
 -------------------
@@ -32,4 +32,4 @@ Cómo abrir y compilar
 
 Contacto
 --------
-Para más detalles consultar la carpeta docs/ o el histórico de commits para decisiones de diseño.
+Para más detalles consultar el historial de commits para decisiones de diseño.
