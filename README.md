@@ -15,7 +15,7 @@ DataManagement es una solución para gestión de datos y proyectos relacionados 
 - Ligia Gabriela Barrera Copa
 - Victor Hugo Gutierrez
 - Loren Dereck Jiménez
-- Limberg Maldonado
+- Limber Maldonado Casillo
 - Kevin Alexis Padilla Lopez
 
 ### Contenido principal
