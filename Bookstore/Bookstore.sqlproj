@@ -84,5 +84,11 @@
     <Build Include="src\schema\tables\13_order_status.sql" />
     <Build Include="src\schema\tables\14_publisher.sql" />
     <Build Include="src\schema\tables\15_shipping_method.sql" />
+    <Build Include="src\schema\procedures\01_GetDatabaseRowVersion.sql" />
+    <Build Include="src\schema\procedures\02_GetAddressChangesByRowVersion.sql" />
+    <Build Include="src\schema\procedures\03_GetBookChangesByRowVersion.sql" />
+    <Build Include="src\schema\procedures\04_GetCustomerChangesByRowVersion.sql" />
+    <Build Include="src\schema\procedures\05_GetShippingMethodChangesByRowVersion.sql" />
+    <Build Include="src\schema\procedures\06_GetOrdersChangesByRowVersion.sql" />
   </ItemGroup>
 </Project>

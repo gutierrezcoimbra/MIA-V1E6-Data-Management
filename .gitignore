@@ -86,6 +86,10 @@ appsettings.Local.json
 # Ignore user-specific SQL Server Data Tools files
 *.sqlproj.user
 
+# SSDT generated/cache files (se regeneran automáticamente, no deben versionarse)
+*.dbmdl
+*.jfm
+
 # Ignore JetBrains Rider caches
 .idea/
 
