@@ -1,0 +1,28 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Development" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Databases/" />
+  <Folder Name="/Databases/DataWarehouse/">
+    <Project Path="BookstoreDW/BookstoreDW.sqlproj" Id="0da90f65-3f55-4bde-a4f7-8caa58b2a525">
+      <BuildType Solution="Development|*" Project="Release" />
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Databases/OLTP/">
+    <Project Path="Bookstore/BookstoreOLTP.sqlproj" Id="4a35d2e0-be31-4669-85e0-4f4380bedff1">
+      <BuildType Solution="Development|*" Project="Release" />
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/ETL/">
+    <Project Path="BookStoreETL/BookStoreETL.dtproj" Type="c9674dcb-5085-4a16-b785-4c70dd1589bd">
+      <BuildType Project="Development" />
+      <Platform Project="?" />
+    </Project>
+  </Folder>
+</Solution>
