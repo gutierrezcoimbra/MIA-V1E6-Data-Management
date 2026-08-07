@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimBook"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{2AAE6DF3-D09A-40FB-9578-839D50D59471}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{67C999C2-F564-4ADB-B5AC-4479B2713AA6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -118,7 +118,7 @@
           SQLTask:SqlStatementSource="EXEC [dbo].[GetLastPackageRowVersion] @tableName = 'Book'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
-            SQLTask:ResultName="LastVersionRow"
+            SQLTask:ResultName="LastRowVersion"
             SQLTask:DtsVariableName="User::LastVersionRow" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
@@ -1020,7 +1020,7 @@ where [refTable].[BookID] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Sync Staging"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1042,7 +1042,7 @@ where [refTable].[BookID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4B61EAA8-55C5-4396-B23D-A8D81DAD7652}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'Bookr', @lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'Book', @lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::dbts"
@@ -1086,6 +1086,14 @@ where [refTable].[BookID] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 3"
       DTS:To="Package\Update Config" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{717B15E7-2C93-4073-8961-BD759B676CB9}"
+      DTS:From="Package\Update Config"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\Sync Staging" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -1100,6 +1108,10 @@ where [refTable].[BookID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="146,42"
+          Id="Package\Clean staging"
+          TopLeft="387,217" />
+        <NodeLayout
           Size="210,42"
           Id="Package\Get DataBase RowVersion"
           TopLeft="349,50" />
@@ -1107,6 +1119,18 @@ where [refTable].[BookID] = ?</property>
           Size="180,42"
           Id="Package\Get LastRowVersion"
           TopLeft="369,119" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Load Books"
+          TopLeft="385,313" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Sync Staging"
+          TopLeft="394,518" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Update Config"
+          TopLeft="389,409" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="456.5,92">
@@ -1129,10 +1153,6 @@ where [refTable].[BookID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Clean staging"
-          TopLeft="387,217" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="459.5,161">
@@ -1155,10 +1175,6 @@ where [refTable].[BookID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="137,42"
-          Id="Package\Load Books"
-          TopLeft="385,313" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="456.75,259">
@@ -1181,10 +1197,6 @@ where [refTable].[BookID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Update Config"
-          TopLeft="389,409" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="453.5,355">
@@ -1219,10 +1231,28 @@ where [refTable].[BookID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Sync Staging"
-          TopLeft="418,523" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="464.75,451">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1235,6 +1265,14 @@ where [refTable].[BookID] = ?</property>
           Size="130,42"
           Id="Package\Load Books\Get Books"
           TopLeft="333,54" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Load Books\Load staging book"
+          TopLeft="97,281" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Load Books\Load dim book"
+          TopLeft="529,283" />
         <NodeLayout
           Size="129,42"
           Id="Package\Load Books\Búsqueda"
@@ -1270,53 +1308,11 @@ where [refTable].[BookID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Load Books\Load staging book"
-          TopLeft="97,281" />
-        <EdgeLayout
-          Id="Package\Load Books.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="361.333333333333,194">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-179.833333333333,87"
-              Start="0,0"
-              End="-179.833333333333,79.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.4395099540582" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.4395099540582"
-                    Point2="0,35.4395099540582"
-                    Point3="-4,35.4395099540582" />
-                  <mssgle:LineSegment
-                    End="-175.833333333333,35.4395099540582" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-175.833333333333,35.4395099540582"
-                    Point2="-179.833333333333,35.4395099540582"
-                    Point3="-179.833333333333,39.4395099540582" />
-                  <mssgle:LineSegment
-                    End="-179.833333333333,79.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-189.735690104167,40.4395099540582,199.638046875,12.1953125"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Load Books\Load dim book"
-          TopLeft="529,283" />
         <EdgeLayout
           Id="Package\Load Books.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="401.666666666667,194">
@@ -1353,6 +1349,42 @@ where [refTable].[BookID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Books.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="361.333333333333,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-179.833333333333,87"
+              Start="0,0"
+              End="-179.833333333333,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.4395099540582" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.4395099540582"
+                    Point2="0,35.4395099540582"
+                    Point3="-4,35.4395099540582" />
+                  <mssgle:LineSegment
+                    End="-175.833333333333,35.4395099540582" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-175.833333333333,35.4395099540582"
+                    Point2="-179.833333333333,35.4395099540582"
+                    Point3="-179.833333333333,39.4395099540582" />
+                  <mssgle:LineSegment
+                    End="-179.833333333333,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-189.735690104167,40.4395099540582,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1366,29 +1398,6 @@ where [refTable].[BookID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Books\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimBook]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1415,6 +1424,29 @@ where [refTable].[BookID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Books\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimBook]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
