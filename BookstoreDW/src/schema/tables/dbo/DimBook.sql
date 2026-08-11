@@ -8,6 +8,6 @@ CREATE TABLE [dbo].[DimBook]
 	[NumPages]        [int]          NULL,
 	[PublicationDate] [date]         NULL,
 	[PublisherName]   [varchar](400) NULL,
-	[AuthorName]      [varchar](400) NULL
+	[AuthorName]      [varchar](1500) NULL
 );
 GO

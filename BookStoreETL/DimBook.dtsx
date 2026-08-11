@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimBook"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{67C999C2-F564-4ADB-B5AC-4479B2713AA6}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{CC2FD129-5DF0-4A71-8AC5-05079F82BF52}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -430,7 +430,7 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].Columns[publisher_name]"
                       codePage="1252"
                       dataType="str"
-                      errorOrTruncationOperation="Conversión"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].ExternalColumns[publisher_name]"
                       length="400"
@@ -441,10 +441,10 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].Columns[author_name]"
                       codePage="1252"
                       dataType="str"
-                      errorOrTruncationOperation="Conversión"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].ExternalColumns[author_name]"
-                      length="400"
+                      length="8000"
                       lineageId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].Columns[author_name]"
                       name="author_name"
                       truncationRowDisposition="FailComponent" />
@@ -497,7 +497,7 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].ExternalColumns[author_name]"
                       codePage="1252"
                       dataType="str"
-                      length="400"
+                      length="8000"
                       name="author_name" />
                   </externalMetadataColumns>
                 </output>
@@ -550,20 +550,6 @@ where [refTable].[BookID] = ?</property>
                       lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[publication_date]"
                       name="publication_date" />
                     <outputColumn
-                      refId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[publisher_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="400"
-                      lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[publisher_name]"
-                      name="publisher_name" />
-                    <outputColumn
-                      refId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[author_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="400"
-                      lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[author_name]"
-                      name="author_name" />
-                    <outputColumn
                       refId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
@@ -575,6 +561,20 @@ where [refTable].[BookID] = ?</property>
                       lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[publisher_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[publisher_name]"
+                      name="publisher_name" />
+                    <outputColumn
+                      refId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[author_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      lineageId="Package\Load Books\Get Books.Outputs[Salida de error de origen de OLE DB].Columns[author_name]"
+                      name="author_name" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -706,7 +706,7 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Load dim book.Inputs[Entrada de destino de OLE DB].Columns[author_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="400"
+                      cachedLength="8000"
                       cachedName="author_name"
                       externalMetadataColumnId="Package\Load Books\Load dim book.Inputs[Entrada de destino de OLE DB].ExternalColumns[AuthorName]"
                       lineageId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].Columns[author_name]" />
@@ -757,7 +757,7 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Load dim book.Inputs[Entrada de destino de OLE DB].ExternalColumns[AuthorName]"
                       codePage="1252"
                       dataType="str"
-                      length="400"
+                      length="1500"
                       name="AuthorName" />
                   </externalMetadataColumns>
                 </input>
@@ -905,7 +905,7 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Load staging book.Inputs[Entrada de destino de OLE DB].Columns[author_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="400"
+                      cachedLength="8000"
                       cachedName="author_name"
                       externalMetadataColumnId="Package\Load Books\Load staging book.Inputs[Entrada de destino de OLE DB].ExternalColumns[AuthorName]"
                       lineageId="Package\Load Books\Get Books.Outputs[Salida de origen de OLE DB].Columns[author_name]" />
@@ -960,7 +960,7 @@ where [refTable].[BookID] = ?</property>
                       refId="Package\Load Books\Load staging book.Inputs[Entrada de destino de OLE DB].ExternalColumns[AuthorName]"
                       codePage="1252"
                       dataType="str"
-                      length="400"
+                      length="1500"
                       name="AuthorName" />
                   </externalMetadataColumns>
                 </input>
@@ -1096,39 +1096,39 @@ where [refTable].[BookID] = ?</property>
       DTS:To="Package\Sync Staging" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\Clean staging"
           TopLeft="387,217" />
         <NodeLayout
-          Size="210,42"
+          Size="209.6,41.6"
           Id="Package\Get DataBase RowVersion"
           TopLeft="349,50" />
         <NodeLayout
-          Size="180,42"
+          Size="180,41.6"
           Id="Package\Get LastRowVersion"
           TopLeft="369,119" />
         <NodeLayout
-          Size="137,42"
+          Size="133.6,41.6"
           Id="Package\Load Books"
           TopLeft="385,313" />
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Sync Staging"
           TopLeft="394,518" />
         <NodeLayout
-          Size="149,42"
+          Size="148.8,41.6"
           Id="Package\Update Config"
           TopLeft="389,409" />
         <EdgeLayout
@@ -1177,18 +1177,30 @@ where [refTable].[BookID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="456.75,259">
+          TopLeft="459.8,258.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54"
+              EndConnector="-8,54.4"
               Start="0,0"
-              End="0,46.5">
+              End="-8,46.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.5" />
+                    End="0,23.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2"
+                    Point2="0,27.2"
+                    Point3="-4,27.2" />
+                  <mssgle:LineSegment
+                    End="-4,27.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,27.2"
+                    Point2="-8,27.2"
+                    Point3="-8,31.2" />
+                  <mssgle:LineSegment
+                    End="-8,46.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1199,30 +1211,30 @@ where [refTable].[BookID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="453.5,355">
+          TopLeft="451.8,354.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10,54"
+              EndConnector="11.6,54.4"
               Start="0,0"
-              End="10,46.5">
+              End="11.6,46.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23" />
+                    End="0,23.2" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23"
-                    Point2="0,27"
-                    Point3="4,27" />
+                    Point1="0,23.2"
+                    Point2="0,27.2"
+                    Point3="4,27.2" />
                   <mssgle:LineSegment
-                    End="6,27" />
+                    End="7.59999999999997,27.2" />
                   <mssgle:CubicBezierSegment
-                    Point1="6,27"
-                    Point2="10,27"
-                    Point3="10,31" />
+                    Point1="7.59999999999997,27.2"
+                    Point2="11.6,27.2"
+                    Point3="11.6,31.2" />
                   <mssgle:LineSegment
-                    End="10,46.5" />
+                    End="11.6,46.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1262,19 +1274,19 @@ where [refTable].[BookID] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="130,42"
+          Size="129.6,41.6"
           Id="Package\Load Books\Get Books"
           TopLeft="333,54" />
         <NodeLayout
-          Size="169,42"
+          Size="168.8,41.6"
           Id="Package\Load Books\Load staging book"
           TopLeft="97,281" />
         <NodeLayout
-          Size="151,42"
+          Size="151.2,41.6"
           Id="Package\Load Books\Load dim book"
           TopLeft="529,283" />
         <NodeLayout
-          Size="129,42"
+          Size="128.8,41.6"
           Id="Package\Load Books\Búsqueda"
           TopLeft="317,152" />
         <EdgeLayout
@@ -1308,9 +1320,7 @@ where [refTable].[BookID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1345,7 +1355,7 @@ where [refTable].[BookID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-5.47235677083331,41.2542113323124,213.778046875,12.1953125"
+              BoundingBox="-5.4723567708335,41.2542113323124,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
