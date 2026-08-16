@@ -1,0 +1,620 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW",
+        "connectionString": "Provider=SQLOLEDB;Data Source=LAPTOP-LTNQC5A3;Initial Catalog=BookstoreDW;Persist Security Info=false;User ID=sa",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Book",
+        "columns": [
+          {
+            "name": "BookSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BookSK",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BookID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BookID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "sourceColumn": "Title",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ISBN13",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ISBN13",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "LanguageName",
+            "dataType": "string",
+            "sourceColumn": "LanguageName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "NumPages",
+            "dataType": "int64",
+            "sourceColumn": "NumPages",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PublicationDate",
+            "dataType": "string",
+            "sourceColumn": "PublicationDate",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PublisherName",
+            "dataType": "string",
+            "sourceColumn": "PublisherName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AuthorName",
+            "dataType": "string",
+            "sourceColumn": "AuthorName",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimBook",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[DimBook].*   FROM [dbo].[DimBook] ",
+              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[DimBook].*   FROM [dbo].[DimBook] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimBook"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerSK",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "FirstName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "LastName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Email",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Email",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StreetNumber",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "StreetNumber",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StreetName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "StreetName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "City",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Country",
+            "sourceProviderType": "Char"
+          },
+          {
+            "type": "calculated",
+            "name": "CustomerName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE(CONCATENATE(Customer[FirstName],\" \"),Customer[LastName])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomer",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[DimCustomer].*   FROM [dbo].[DimCustomer] ",
+              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[DimCustomer].*   FROM [dbo].[DimCustomer] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCustomer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FullDate",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "FullDate",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DayNumberOfWeek",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "DayNameOfWeek",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DayNameOfWeek",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DayNumberOfMonth",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DayNumberOfYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "WeekNumberOfYear",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthNumberOfYear",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "CalendarQuarter",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CalendarQuarter",
+            "sourceProviderType": "UnsignedTinyInt"
+          },
+          {
+            "name": "CalendarYear",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CalendarSemester",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CalendarSemester",
+            "sourceProviderType": "UnsignedTinyInt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[DimDate].*   FROM [dbo].[DimDate] ",
+              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[DimDate].*   FROM [dbo].[DimDate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDate"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "ShippingMethod",
+        "columns": [
+          {
+            "name": "ShippingMethodSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShippingMethodSK",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShippingMethodID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShippingMethodID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MethodName",
+            "dataType": "string",
+            "sourceColumn": "MethodName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Cost",
+            "dataType": "double",
+            "sourceColumn": "Cost",
+            "sourceProviderType": "Numeric"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimShippingMethod",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[DimShippingMethod].*   FROM [dbo].[DimShippingMethod] ",
+              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[DimShippingMethod].*   FROM [dbo].[DimShippingMethod] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimShippingMethod"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Orders",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrderID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LineID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LineID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "OrderDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrderDateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "StatusDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "StatusDateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CustomerSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerSK",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BookSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BookSK",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShippingMethodSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShippingMethodSK",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Price",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Price",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "OrderStatus",
+            "dataType": "string",
+            "sourceColumn": "OrderStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "StatusDate",
+            "dataType": "dateTime",
+            "sourceColumn": "StatusDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactOrders",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[FactOrders].*   FROM [dbo].[FactOrders] ",
+              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Revenue",
+            "expression": "SUM(Orders[Price])"
+          },
+          {
+            "name": "Order Count",
+            "expression": " DISTINCTCOUNT ( Orders[OrderID] )"
+          },
+          {
+            "name": "Line Items",
+            "expression": " COUNTROWS ( Orders )"
+          },
+          {
+            "name": "Avg Lines Per Order",
+            "expression": " DIVIDE ( [Line Items], [Order Count] )"
+          },
+          {
+            "name": "Delivered Orders",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    DISTINCTCOUNT ( Orders[OrderID] ),",
+              "    Orders[OrderStatus] = \"Delivered\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Pending Delivery Orders",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    DISTINCTCOUNT ( Orders[OrderID] ),",
+              "    Orders[OrderStatus] = \"Pending Delivery\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Canceled Delivery Orders",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    DISTINCTCOUNT ( Orders[OrderID] ),",
+              "    Orders[OrderStatus] = \"Cancelled\"",
+              ")"
+            ]
+          },
+          {
+            "name": "In Progress Delivery Orders",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    DISTINCTCOUNT ( Orders[OrderID] ),",
+              "    Orders[OrderStatus] = \"Delivery In Progress\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Cancelled Amount",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    SUM ( Orders[Price] ),",
+              "    Orders[OrderStatus] = \"Cancelled\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Returned Amount",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    SUM ( Orders[Price] ),",
+              "    Orders[OrderStatus] = \"Returned\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Net Revenue",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    SUM ( Orders[Price] ),",
+              "    Orders[OrderStatus] = \"Delivered\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Cancel Rate",
+            "expression": " DIVIDE ( [Cancelled Amount], [Revenue] )"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[FactOrders].*   FROM [dbo].[FactOrders] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactOrders"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "ab08a8ae-18c1-4cd5-9ef2-62594fef6d87",
+        "fromTable": "Orders",
+        "fromColumn": "StatusDateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "924dd092-5e32-43d8-bb6d-22c24ac93f06",
+        "fromTable": "Orders",
+        "fromColumn": "BookSK",
+        "toTable": "Book",
+        "toColumn": "BookSK"
+      },
+      {
+        "name": "a053f6d3-6e38-4734-a05a-6afd4d69b17c",
+        "fromTable": "Orders",
+        "fromColumn": "CustomerSK",
+        "toTable": "Customer",
+        "toColumn": "CustomerSK"
+      },
+      {
+        "name": "fee57e8d-fd79-4de9-85b2-184da8413017",
+        "fromTable": "Orders",
+        "fromColumn": "OrderDateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "78b32d01-f5a3-46db-a862-ea0eeabec1a0",
+        "fromTable": "Orders",
+        "fromColumn": "ShippingMethodSK",
+        "toTable": "ShippingMethod",
+        "toColumn": "ShippingMethodSK"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
