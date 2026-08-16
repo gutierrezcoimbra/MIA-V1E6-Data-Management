@@ -1,15 +1,5 @@
-# MIA-V1E6
+# Bookstore OLTP — esquema y scripts
 
-## Módulo: Data Management and Business Intelligence
+Tablas, procedimientos CDC y datos semilla del proyecto `BookstoreOLTP`.
 
-### Grupo
-
-5
-
-### Integrantes
-
-- Ligia Gabriela Barrera Copa
-- Victor Hugo Gutierrez
-- Loren Dereck Jiménez
-- Limberg Maldonado
-- Kevin Alexis Padilla Lopez
+La documentación del repositorio está en el [README raíz](../../README.md).

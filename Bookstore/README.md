@@ -1,16 +1,5 @@
-# MIA-V1E6
+# Bookstore OLTP
 
-## Módulo: Data Management and Business Intelligence
+Proyecto SSDT de la base transaccional (`BookstoreOLTP.sqlproj`).
 
-### Proyecto: Bookstore
-
-### Grupo 
-5
-
-### Integrantes
-
-- Ligia Gabriela Barrera Copa
-- Victor Hugo Gutierrez
-- Loren Dereck Jiménez
-- Limberg Maldonado
-- Kevin Alexis Padilla Lopez
+La documentación del repositorio (arquitectura, diagramas, estructura y despliegue) está en el [README raíz](../README.md).
