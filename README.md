@@ -279,7 +279,7 @@ Objetos de apoyo:
 
 ## Modelo tabular (OLAP)
 
-Proyecto de Analysis Services en modo **tabular In-Memory** (`DirectQueryMode = InMemory`). Nivel de compatibilidad **1200**. El origen de datos es la base `BookstoreDW`. Al desplegar, la base en el servidor SSAS se llama `BookStoreOLAP` y el cubo/modelo `Model`.
+Proyecto de Analysis Services en modo **tabular In-Memory** (`DirectQueryMode = InMemory`). Nivel de compatibilidad **1500** (requerido para la seguridad de objetos; ver [Roles del modelo](#roles-del-modelo)). El origen de datos es la base `BookstoreDW`. Al desplegar, la base en el servidor SSAS se llama `BookStoreOLAP` y el cubo/modelo `Model`.
 
 Tablas del modelo (nombres de presentación → tabla del DW). Las claves técnicas (`*SK`, `*ID`, `*Key`) y columnas usadas solo en cálculos están ocultas para el cliente.
 
@@ -349,6 +349,19 @@ erDiagram
 - Activas: `Orders[OrderDateKey] → Date[DateKey]`, `Orders[CustomerSK] → Customer[CustomerSK]`, `Orders[BookSK] → Book[BookSK]`, `Orders[ShippingMethodSK] → ShippingMethod[ShippingMethodSK]`
 - Inactiva: `Orders[StatusDateKey] → Date[DateKey]` (usar `USERELATIONSHIP` en DAX si se analiza por fecha de estado)
 
+### Roles del modelo
+
+El modelo define dos roles con **seguridad de objetos (OLS)** — restricción de tablas y columnas, no de filas:
+
+| Rol | Restricciones |
+| --- | --- |
+| `Vendedores` | Sin acceso a la tabla `ShippingMethod` ni a las columnas `Customer[Email]`, `Customer[StreetNumber]` y `Customer[StreetName]` (datos personales) |
+| `Analistas` | Sin acceso a la tabla `Customer` completa |
+
+- Los roles se definen en el `.bim` (sección `roles` → `tablePermissions` / `columnPermissions`). El *Role Manager* de Visual Studio (**Model → Roles…**) solo muestra miembros y filtros de fila; para ver o editar la seguridad de columnas/tablas se edita el `.bim` o se usa Tabular Editor.
+- Sin miembros asignados, un rol no afecta a nadie. Agregar usuarios de Windows en **Model → Roles… → Members**.
+- Los administradores del servidor SSAS **ignoran** estas restricciones: para probarlas se necesita otro usuario o elegir el rol en *Analyze in Excel*.
+
 Hay un reporte de ejemplo en [BookStoreOLAP/reports/report.pbix](BookStoreOLAP/
 reports/report.pbix).
 
@@ -366,13 +379,28 @@ reports/report.pbix).
 
 Abrir `BookStore.slnx` en Visual Studio. No hay restauración de paquetes NuGet: los proyectos son SSDT, SSIS y SSAS tabular.
 
+La primera vez que se abre `BookStoreOLAP.bim`, Visual Studio pide el **servidor de área de trabajo**: usar `localhost` (una instancia SSAS en modo tabular). VS genera automáticamente los archivos personales `BookStoreOLAP.bim_<usuario>.settings` y `.bim.layout`, que están excluidos del repositorio vía `.gitignore`.
+
 ### Orden de despliegue
 
 1. Publicar **BookstoreOLTP** (esquema y datos semilla).
 2. Publicar **BookstoreDW** (dimensiones, hecho, staging, `DimDate` y `PackageConfig`).
 3. Desplegar el proyecto SSIS al catálogo SSISDB, carpeta `BookStore`.
 4. Crear o actualizar el job de SQL Agent con [Jobs/BookStoreETLJob.sql](Jobs/BookStoreETLJob.sql). El script fija el propietario `LAPTOP-LTNQC5A3\Ligia`; cámbielo antes de ejecutarlo.
-5. Desplegar **BookStoreOLAP** a Analysis Services (`localhost` → base `BookStoreOLAP`). Ajuste la cadena de conexión del origen `SqlServer … BookstoreDW` si el servidor o la base del DW no coinciden con su entorno, y procese el modelo para cargar los datos.
+5. Desplegar **BookStoreOLAP** a Analysis Services (`localhost` → base `BookStoreOLAP`). Ajuste la cadena de conexión del origen de datos si el servidor o la base del DW no coinciden con su entorno, y procese el modelo para cargar los datos.
+
+   El modelo procesa con `impersonateServiceAccount`, es decir, la **cuenta de servicio de SSAS** necesita lectura sobre `BookstoreDW`. Ejecutar una sola vez por máquina:
+
+   ```sql
+   CREATE LOGIN [NT SERVICE\MSSQLServerOLAPService] FROM WINDOWS;
+   GO
+   USE BookstoreDW;
+   GO
+   CREATE USER [NT SERVICE\MSSQLServerOLAPService]
+       FOR LOGIN [NT SERVICE\MSSQLServerOLAPService];
+   ALTER ROLE db_datareader ADD MEMBER [NT SERVICE\MSSQLServerOLAPService];
+   GO
+   ```
 
 El runbook de publicación del OLTP (perfil local, `SqlPackage`, revisión del script) está en [Bookstore/docs/deployment.md](Bookstore/docs/deployment.md). La comparación de esquema de referencia está en [Bookstore/docs/baseline-schema-comparison.md](Bookstore/docs/baseline-schema-comparison.md).
 

@@ -1,12 +1,12 @@
 {
   "name": "SemanticModel",
-  "compatibilityLevel": 1200,
+  "compatibilityLevel": 1500,
   "model": {
     "culture": "en-US",
     "dataSources": [
       {
-        "name": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW",
-        "connectionString": "Provider=SQLOLEDB;Data Source=LAPTOP-LTNQC5A3;Initial Catalog=BookstoreDW;Persist Security Info=false;User ID=sa",
+        "name": "Kevin connection",
+        "connectionString": "Provider=SQLOLEDB;Data Source=.;Persist Security Info=false;User ID=sa;Integrated Security=SSPI;Initial Catalog=BookstoreDW",
         "impersonationMode": "impersonateServiceAccount",
         "annotations": [
           {
@@ -85,7 +85,7 @@
             "source": {
               "type": "query",
               "query": " \t\t\t\tSELECT [dbo].[DimBook].*   FROM [dbo].[DimBook] ",
-              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+              "dataSource": "Kevin connection"
             }
           }
         ],
@@ -185,7 +185,7 @@
             "source": {
               "type": "query",
               "query": " \t\t\t\tSELECT [dbo].[DimCustomer].*   FROM [dbo].[DimCustomer] ",
-              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+              "dataSource": "Kevin connection"
             }
           }
         ],
@@ -297,7 +297,7 @@
             "source": {
               "type": "query",
               "query": " \t\t\t\tSELECT [dbo].[DimDate].*   FROM [dbo].[DimDate] ",
-              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+              "dataSource": "Kevin connection"
             }
           }
         ],
@@ -353,7 +353,7 @@
             "source": {
               "type": "query",
               "query": " \t\t\t\tSELECT [dbo].[DimShippingMethod].*   FROM [dbo].[DimShippingMethod] ",
-              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+              "dataSource": "Kevin connection"
             }
           }
         ],
@@ -459,7 +459,7 @@
             "source": {
               "type": "query",
               "query": " \t\t\t\tSELECT [dbo].[FactOrders].*   FROM [dbo].[FactOrders] ",
-              "dataSource": "SqlServer LAPTOP-LTNQC5A3 BookstoreDW"
+              "dataSource": "Kevin connection"
             }
           }
         ],
@@ -607,6 +607,47 @@
         "fromColumn": "ShippingMethodSK",
         "toTable": "ShippingMethod",
         "toColumn": "ShippingMethodSK"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Vendedores",
+        "description": "Personal de ventas. No ve la tabla de metodos de envio ni los datos personales de los clientes (email y direccion).",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "ShippingMethod",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "Customer",
+            "columnPermissions": [
+              {
+                "name": "Email",
+                "metadataPermission": "none"
+              },
+              {
+                "name": "StreetNumber",
+                "metadataPermission": "none"
+              },
+              {
+                "name": "StreetName",
+                "metadataPermission": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Analistas",
+        "description": "Analistas de negocio. No ven la tabla de clientes; solo analizan libros, fechas y pedidos.",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Customer",
+            "metadataPermission": "none"
+          }
+        ]
       }
     ],
     "annotations": [

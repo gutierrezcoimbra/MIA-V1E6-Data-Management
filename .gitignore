@@ -90,6 +90,10 @@ appsettings.Local.json
 *.dbmdl
 *.jfm
 
+# Archivos personales del modelo tabular (cada usuario genera los suyos al abrir el .bim)
+*.bim.layout
+*.bim_*.settings
+
 # Ignore JetBrains Rider caches
 .idea/
 
